@@ -1,0 +1,50 @@
+//  ==========================================================================
+//  Global style import Master File
+//  ==========================================================================
+    @import "base/*";
+    @import "mixins/*";
+    @import 'foundation';
+    @include foundation-global-styles;
+    //@include foundation-grid;
+    @include foundation-flex-classes;
+    @include foundation-flex-grid;
+    // @include foundation-xy-grid-classes(
+    //   $base-grid: true,
+    //   $margin-grid: true,
+    //   $padding-grid: true,
+    //   $block-grid: true,
+    //   $collapse: true,
+    //   $offset: true,
+    //   $vertical-grid: true
+    // );
+    @include foundation-typography;
+    @include foundation-visibility-classes;
+    @include foundation-float-classes;
+    @include foundation-flex-classes;
+
+//  ==========================================================================
+//  Vendor, from Bower and Vendor
+//  ==========================================================================
+
+//  ==========================================================================
+//  Elements - such as heading, buttons, nav, footer
+//  ==========================================================================
+
+    @import 'elements/*.scss';
+
+//  ==========================================================================
+//  Modules - reused pieces,
+//  ==========================================================================
+
+    @import 'modules/*.scss';
+
+//  ==========================================================================
+//  Pages - views
+//  ==========================================================================
+
+    @import 'pages/*.scss';
+
+//  ==========================================================================
+//  Utilities - adjusting classes
+//  ==========================================================================
+    @import 'utilities/*.scss';

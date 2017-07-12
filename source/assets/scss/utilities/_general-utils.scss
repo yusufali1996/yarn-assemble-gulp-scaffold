@@ -1,0 +1,47 @@
+.flex-vert-center{
+  display: flex;
+  align-items: center;
+}
+
+.flex-vert-center-right{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.flex-vert-center-left{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.uppercase{
+  text-transform: uppercase;
+}
+
+.hidden{
+  display: none !important;
+  visibility: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, a{
+  letter-spacing: .04rem;
+}
+
+p{
+  font-size: .87rem;
+  letter-spacing: .04rem;
+  color: #333;
+}
+
+@include breakpoint(small down){
+  .flex-vert-center--mobile-fix{
+    display: block;
+    align-items: center;
+  }
+
+  .flex-vert-center-right--mobile-fix{
+    align-items: center;
+    justify-content: center;
+  }
+}
