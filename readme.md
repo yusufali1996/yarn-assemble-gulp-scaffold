@@ -3,7 +3,7 @@
 ### A simple and easy to use project scaffold for microsites and small applications.
 
 ### Project Overview
-As a need to simplify and make consistent the front end workflow, this framework builds upon the standard Rokkan front end framework with some of the latest modern dependency managers, static build tools, and with out of the box support for ES6 with conversion through the Babel transpiler. 
+As a need to simplify and make consistent the front end workflow, this framework builds upon the standard Rokkan front end framework with some of the latest modern dependency managers, static build tools, and with out of the box support for ES6 with conversion through the Babel transpiler.
 
 ### Project Reqirements
 1. Node v7.0.0
@@ -24,22 +24,32 @@ In short, we're using Yarn over NPM, read more here: [https://yarnpkg.com/en/](h
 
 ### Navigating the file structure
 * yarn.lock - Yarn dependency version file, keeps everything in sync across systems.* source - The main folder where you'll do most of your building (JS, Handlebars, SCSS).* package.json - The standard NPM package folder.* node_modules - Node modules installed via Yarn.* gulpfile.js - Your main gulpfile which contains all of the tasks you'll be running on build.
-* gulp-tasks - This folder contains partialized gulp tasks, keeping the gulpfile much more concise.* *build* - This folder is generated on build, and contains your static assets.* .gitignore - The git ignore file, remember this is shared — be mindful of what you add here.* .gitattributes - The git attributes folder which sets simple git params for the CLI.* .eslintrc.js - This is the eslint config file which sets up how eslint lints your JS. * .browserslistrc - This is a shared browser list used by autoprefixed when parsing CSS.
+* gulp-tasks - This folder contains partialized gulp tasks, keeping the gulpfile much more concise.* *build* - This folder is generated on build, and contains your static assets.* .gitignore - The git ignore file, remember this is shared — be mindful of what you add here.* .gitattributes - The git attributes folder which sets simple git params for the CLI.* .eslintrc.js - This is the eslint config file which sets up how eslint lints your JS.* .browserslistrc - This is a shared browser list used by autoprefixed when parsing CSS.
 
 ### Included Gulp Tasks
-1. `gulp build` - builds entire site, runs in sequence:
-	1. `'clean:build', 'assemble', 'images', 'sass', 'autoprefixer', 'wst', 'modernizr', 'compress', 'watch'`
+1. `gulp build` - builds entire site, runs in sequence with extra sync and watch:
+	1. `'clean:build', 'assemble', 'images', 'sass', 'webpack', 'modernizr', 'fonts', 'sync', 'watch'`
+2. `gulp build --production` - builds entire site, runs in sequence with production:
+	1. `'clean:build', 'assemble', 'images', 'sass', 'webpack', 'modernizr', 'fonts'`
 
 #### Sub module Tasks (gulp)
 1. `'clean:build'` - cleans the build folder prior to building
 2. `'assemble'` - runs assemble
 3. `'images'` - optimizes images using imagemin and imagemin-guetzli
-4. `'sass'` - convers scss to sass, includes pipe to foundation 6 for sites, generates sourcemaps
-5. `'autoprefixer'` - autoprefixes styles using a shared .browserslistrc (same as browserslist array)
-6. `'wst'` - webpack site transpiler via babel and eslint
+4. `'sass'` - convers scss to sass, includes pipe to foundation 6 for sites, generates sourcemaps on dev, autoprefixes
+5. `'fonts'` - moves fonts over
+6. `'webpack'` - webpack site transpiler via babel and eslint, uglifies on production
 7. `'modernizr'` - generates a custom modernizr test and outputs js, minified to the js folder
-8. `'compress'` - compresses JS via uglify and pump
-9. `'watch'` - simple watch for assets / views 
+8. `'sync'` - spins up browser sync and a localhost
+9. `'watch'` - simple watch for assets / views
+10. `'iconfont'` - generates and iconfont from svgs. Must be run seperate and edit scss to include font
+
+### Production VS Development
+Run any task with the `--production` to trigger production features such as minify/uglify/etc
+
+To add production features to gulp tasks add the below code and reference the `isProduction` variable (true|false)
+1. const gulpVars = require('require-dir')('../gulp-vars');
+2. const isProduction = gulpVars.vars();
 
 ### Working with Assemble
 Assemble is a static site generator that uses a variety of templating tools to generate static HTML from partials. This build makes use of the handlebars (.hbs) template language; however, you can pretty much swap this engine out for one of your liking (we like Pug (formerly Jade)) if you're short on inspiration. Note: changing template logic will require you to update the gulpfile and assemble template engine values.
@@ -93,9 +103,6 @@ This build preferences deploment via 3rd party CUI tools such as jenkins or depl
 1. @todo webpack only compilation
 2. @todo additional es6 demos
 3. @todo css grids
-4. @todo prod/dev flags on gulp
-5. @todo add browsersync
-6. @todo shared paths file for gulp file
 
 
 

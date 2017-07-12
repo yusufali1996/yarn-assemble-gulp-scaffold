@@ -37,23 +37,23 @@ $print-transparent-backgrounds: true;
 // --------------
 
 $breakpoints: (
-  small: 0,
-  xsmall: 320,
+  xsmall: 0,
+  small: 480,
   medium: 640px,
-  large: 1025px,
-  xlarge: 1200px,
-  xxlarge: 1440px,
+  large: 860px,
+  xlarge: 1024px,
+  xxlarge: 1400px,
 );
 $print-breakpoint: large;
-$breakpoint-classes: (small medium large);
+$breakpoint-classes: (xsmall small medium large xlarge xxlarge);
 
 // 3. The Grid
 // -----------
 
 $grid-row-width: $global-width;
-$grid-column-count: 12;
+$grid-column-count: 24;
 $grid-column-gutter: (
-  small: 20px,
+  xsmall: 20px,
   medium: 30px,
 );
 $grid-column-align-edge: true;
@@ -70,7 +70,7 @@ $header-color: inherit;
 $header-lineheight: 1.2;
 $header-margin-bottom: 0.5rem;
 $header-styles: (
-  small: (
+  xsmall: (
     'h1': ('font-size': 40),
     'h2': ('font-size': 30),
     'h3': ('font-size': 24),

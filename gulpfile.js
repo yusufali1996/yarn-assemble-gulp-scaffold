@@ -6,6 +6,8 @@
 const gulp = require('gulp');
 const requireDir = require('require-dir')('./gulp-tasks');
 const runSequence = require('run-sequence').use(gulp);
+const gulpVars = require('require-dir')('./gulp-vars');
+const isProduction = gulpVars.vars();
 
 //**
 //
@@ -14,7 +16,11 @@ const runSequence = require('run-sequence').use(gulp);
 //**
 
 const sequence = callback => {
-  runSequence('clean:build', 'assemble', 'images', 'sass', 'autoprefixer', 'wst', 'modernizr', 'compress', 'watch', callback);
+  if( isProduction ){
+    runSequence('clean:build', 'assemble', 'images', 'sass', 'webpack', 'modernizr', 'fonts', callback);
+  } else {
+    runSequence('clean:build', 'assemble', 'images', 'sass', 'webpack', 'modernizr', 'fonts', 'sync', 'watch', callback);
+  }
 };
 
 gulp.task('default', callback => {

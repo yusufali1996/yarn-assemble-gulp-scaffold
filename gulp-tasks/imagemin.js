@@ -9,7 +9,7 @@ const cache = require('gulp-cache');
 //**
 
 gulp.task('images', () => {
-  return gulp.src('source/assets/img/source/**/*')
+  return gulp.src('source/assets/img/**/*')
     .pipe(imagemin([imageminGuetzli({
       quality: 85
     })]))
