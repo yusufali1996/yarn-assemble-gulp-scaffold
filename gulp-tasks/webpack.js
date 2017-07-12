@@ -29,7 +29,7 @@ gulp.task('webpack', () => {
     .pipe(
       webpackStream({
         output: {
-          filename: 'main.js',
+          filename: 'bundle.js',
         },
         watch: false,
         plugins: plugins,

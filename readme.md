@@ -103,7 +103,7 @@ This build preferences deploment via 3rd party CUI tools such as jenkins or depl
 1. @todo webpack only compilation
 2. @todo additional es6 demos
 3. @todo css grids
-
+4. @todo Fix assemble not reloading/cache?
 
 
 Readme updated 7.11.17
